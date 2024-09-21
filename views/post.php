@@ -1,13 +1,13 @@
 <h1><?php echo htmlspecialchars($title); ?></h1>
 <p><?php echo htmlspecialchars($content); ?></p>
 <hr>
+<h3>Comments</h3>
 <div>
     <form action="/blog_app/post.php?blog_id=<?php echo $post['blog_id'] ?>" method="POST">
         <textarea name="content" id="txt_comment"></textarea>
         <button type="submit">Leave a Comment</button>
     </form>
 </div>
-
 <?php if (!empty($comments)): ?>
     <ul>
         <?php foreach ($comments as $comment): ?>

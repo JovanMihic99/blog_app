@@ -71,7 +71,7 @@ footer {
 
 
 /* Form style */
-orm {
+form {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center the items horizontally */
