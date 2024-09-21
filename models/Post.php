@@ -39,6 +39,26 @@ class Post
         }
         return [];
     }
+    public function get_post($id)
+    {
+        $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id WHERE blog_id = :blog_id;");
+        $stmt->bindParam(':blog_id', $id);
+        if ($stmt->execute()) {
+            $post = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $post;
+        }
+        return null;
+    }
+    public function get_comments($id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM comment c JOIN user AS u ON c.user_id = u.user_id WHERE post_id = :blog_id;");
+        $stmt->bindParam(':blog_id', $id);
+        if ($stmt->execute()) {
+            $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $comments;
+        }
+        return null;
+    }
     public function getPostsByUserId()
     {
         $user_id = $_GET['user_id'];

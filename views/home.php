@@ -8,15 +8,19 @@
 
     <ul>
         <?php foreach ($posts as $post): ?>
-            <li>
-                <h2><?php echo htmlspecialchars($post['title']); ?></h2>
-                <a href="/blog_app/user.php?user_id=<?php echo htmlspecialchars($post['user_id']) ?>">
-                    <?php echo htmlspecialchars($post['user_name']) ?>
-                </a>
-                <br>
-                <small>Posted on <?php echo htmlspecialchars($post['created_timestamp']); ?></small>
-                <p><?php echo htmlspecialchars($post['content']); ?></p>
-            </li>
+            <a href="/blog_app/post.php?blog_id=<?php echo htmlspecialchars($post['blog_id']) ?>">
+                <div>
+                    <li>
+                        <h2><?php echo htmlspecialchars($post['title']); ?></h2>
+                        <a href="/blog_app/user.php?user_id=<?php echo htmlspecialchars($post['user_id']) ?>">
+                            <?php echo htmlspecialchars($post['user_name']) ?>
+                        </a>
+                        <br>
+                        <small>Posted on <?php echo htmlspecialchars($post['created_timestamp']); ?></small>
+                        <p><?php echo htmlspecialchars($post['content']); ?></p>
+                    </li>
+                </div>
+            </a>
         <?php endforeach; ?>
     </ul>
 <?php else: ?>
