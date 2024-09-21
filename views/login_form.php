@@ -12,3 +12,5 @@
 <?php if (!empty($error)): ?>
     <div class="error"><?php echo htmlspecialchars($error); ?></div>
 <?php endif; ?>
+
+<script src="/blog_app/public/js/validation/login.js"></script>

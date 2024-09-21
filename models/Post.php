@@ -75,7 +75,7 @@ class Post
             }
         }
     }
-    public function getPostsByUserId()
+    public function get_post_by_user_id()
     {
         $user_id = $_GET['user_id'];
         $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id WHERE bp.user_id = :user_id;");

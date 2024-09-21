@@ -2,7 +2,7 @@
 require_once 'config/init.php';
 
 $blogPostModel = new Post($connection);
-$posts = $blogPostModel->getPostsByUserId(); // Fetch posts
+$posts = $blogPostModel->get_post_by_user_id(); // Fetch posts
 
 $user_name = $userModel->getUserById($_GET['user_id'])['user_name'];
 // Set the page title and any initial variables

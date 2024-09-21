@@ -1,86 +1,98 @@
 /* General Styles */
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
+html,
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  margin: 0;
+
+  background-image: url("../img/background3.jpg");
+  background-color: #cccccc;
+  background-size: cover; /* Scales the image to cover the entire area */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat;
+
+  font-family: Arial, sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Navigation Styles */
 nav {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
+  background-color: #333;
+  color: white;
+
+  padding: 10px 20px;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
 nav li {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
-nav a:hover {
-    text-decoration: underline;
+a {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Inherits the color of the surrounding text */
+  transition: color 0.3s; /* Adds a smooth transition for color changes */
+}
+
+a:hover {
+  color: #007bff;
 }
 
 /* Content Styles */
 .content {
-    flex: 1; /* This allows the content area to expand */
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex: 1; /* This allows the content area to expand */
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
 }
 
-h1, h2 {
-    color: #2c3e50;
+h1,
+h2 {
+  color: #2c3e50;
 }
 
 h2 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 p {
-    line-height: 1.6;
+  line-height: 1.6;
 }
 
 /* Footer Styles */
 footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #333;
-    color: white;
+  text-align: center;
+  padding: 10px 0;
+  background-color: #333;
+  color: white;
 }
-
 
 /* Form style */
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center the items horizontally */
-    max-width: 400px; /* Set a maximum width for the form */
-    margin: 0 auto; /* Center the form on the page */
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px; /* Add some rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the items horizontally */
+  max-width: 400px; /* Set a maximum width for the form */
+  margin: 0 auto; /* Center the form on the page */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px; /* Add some rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Input Styles */
@@ -88,23 +100,48 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
-    width: 100%; /* Make inputs take full width */
-    padding: 10px;
-    margin-bottom: 15px; /* Add some space between inputs */
-    border: 1px solid #ccc;
-    border-radius: 4px; /* Rounded corners */
+  width: 100%; /* Make inputs take full width */
+  padding: 10px;
+  margin-bottom: 15px; /* Add some space between inputs */
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Rounded corners */
 }
 
 /* Button Styles */
 button {
-    padding: 10px 15px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #555; /* Darker on hover */
+  background-color: #555; /* Darker on hover */
+}
+
+/* Posts Styles */
+.posts-wrapper > ul {
+  list-style-type: none;
+}
+nav ul li a.active {
+  color: #ffffff; /* Text color for active link */
+  background-color: #007bff; /* Background color for active link */
+  border-radius: 5px; /* Optional: rounded corners */
+  padding: 5px 10px; /* Optional: adjust spacing */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Basic styling for blog posts */
+.blog-posts {
+  list-style: none;
+  padding: 0;
+}
+
+.blog-post {
+  padding: 20px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s, background-color 0.3s; /* Smooth transition for scaling and color */
 }
