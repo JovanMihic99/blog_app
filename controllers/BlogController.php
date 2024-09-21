@@ -1,13 +1,13 @@
 <?php
-class AuthController
+class BlogController
 {
     private $db;
-    private $userModel;
+    private $blogrModel;
 
     public function __construct($db)
     {
         $this->db = $db;
-        $this->userModel = new User($db);
+        $this->blogModel = new Blog($db);
     }
 
     public function register()
