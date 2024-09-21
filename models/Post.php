@@ -59,6 +59,22 @@ class Post
         }
         return null;
     }
+    public function post_comment($content, $user_id, $post_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $stmt = $this->conn->prepare("INSERT INTO comment (content, user_id, post_id) VALUES ( :content, :user_id, :post_id);");
+
+            // Bind parameters
+            $stmt->bindParam(':content', $content);
+            $stmt->bindParam(':user_id', $user_id);
+            $stmt->bindParam(':post_id', $post_id);
+
+            // Execute the statement
+            if ($stmt->execute()) {
+                return true; // Add comment successful
+            }
+        }
+    }
     public function getPostsByUserId()
     {
         $user_id = $_GET['user_id'];
