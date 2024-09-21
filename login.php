@@ -1,12 +1,6 @@
 <?php
 require_once 'config/init.php';
-require_once 'models/User.php';
-require_once 'controllers/AuthController.php';
 
-// Initialize the User model with the database connection
-$userModel = new User($connection);
-// Initialize the AuthController with the user model
-$authController = new AuthController($connection);
 
 $title = "Login";
 $content = "<h1>LOGIN CONTENT</h1>"; // Initialize content

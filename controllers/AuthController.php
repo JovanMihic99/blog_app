@@ -76,8 +76,6 @@ class AuthController
     }
     public function logout()
     {
-        // session_start();
-
         // Unset all session variables
         $_SESSION = [];
         // Destroy the session

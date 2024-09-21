@@ -1,11 +1,9 @@
 <?php
-
-
-require_once 'config/init.php'; // Include your initialization logic
+require_once 'config/init.php';
 
 // Set the page title and any initial variables
 $title = "My Blog Website";
-$content = `<p>This is the homepage of your blog application.</p>`;
+$content = "";
 
 // Render the view
 ob_start(); // Start output buffering

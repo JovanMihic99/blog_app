@@ -1,23 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <?php
-    include('partials/nav.php'); // Include the navigation 
-
-    ?>
-    <?php
-
-    echo "<h1>Loggde in:" . $_SESSION['user_name'] . "</h1>";
+<?php
+require_once 'config/init.php';
 
 
-    ?>
-</body>
+// Set the page title and any initial variables
+$title = "Register";
+$content = ""; // Initialize content
 
-</html>
+// Check if the registration form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $authController->register(); // Call the register method from AuthController
+    header("Location: /blog_app/index.php");
+    die();
+}
+
+// Render the view
+ob_start(); // Start output buffering
+include 'views/register_form.php'; // Include the register view
+$content = ob_get_clean(); // Get the content of the view
+
+// Render the layout
+include 'views/layout.php'; // Include the layout
+?>
