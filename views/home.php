@@ -10,7 +10,7 @@
         <?php foreach ($posts as $post): ?>
             <li>
                 <h2><?php echo htmlspecialchars($post['title']); ?></h2>
-                <a href="/blog_app/user/<?php echo htmlspecialchars($post['user_id']) ?>">
+                <a href="/blog_app/user.php?user_id=<?php echo htmlspecialchars($post['user_id']) ?>">
                     <?php echo htmlspecialchars($post['user_name']) ?>
                 </a>
                 <br>

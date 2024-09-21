@@ -1,12 +1,12 @@
 <?php
 require_once 'config/init.php';
 
-
 $blogPostModel = new Post($connection);
-$posts = $blogPostModel->getPosts(); // Fetch posts
+$posts = $blogPostModel->getPostsByUserId(); // Fetch posts
 
+$user_name = $userModel->getUserById($_GET['user_id'])['user_name'];
 // Set the page title and any initial variables
-$title = "My Blog Website";
+$title = $user_name . "'s blog posts";
 $content = "";
 
 // Render the view

@@ -39,23 +39,16 @@ class Post
         }
         return [];
     }
-
-    public function usernameExists($username)
+    public function getPostsByUserId()
     {
-        $query = "SELECT * FROM user WHERE user_name = :username LIMIT 1;";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':username', $username);
-        $stmt->execute();
-
-        // Return true if the username exists, false otherwise
-        return $stmt->rowCount() > 0;
-    }
-    public function getUserByUsername($username)
-    {
-        $query = "SELECT * FROM user WHERE user_name = :username LIMIT 1";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':username', $username);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $user_id = $_GET['user_id'];
+        $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id WHERE bp.user_id = :user_id;");
+        $stmt->bindParam(':user_id', $user_id);
+        if ($stmt->execute()) {
+            // Fetch all results as an associative array
+            $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $posts; // Return the fetched posts
+        }
+        return [];
     }
 }
