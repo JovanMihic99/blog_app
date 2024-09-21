@@ -17,7 +17,7 @@
                         </a>
                         <br>
                         <small>Posted on <?php echo htmlspecialchars($post['created_timestamp']); ?></small>
-                        <p><?php echo htmlspecialchars($post['content']); ?></p>
+                        <p><?php echo htmlspecialchars(substr($post['content'], 0, 250) . '...'); ?></p>
                     </li>
                 </div>
             </a>
