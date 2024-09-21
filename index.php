@@ -1,4 +1,5 @@
 <?php
+session_start();
 // db.php (Database connection)
 // try {
 //     $db = new PDO('mysql:host=localhost;dbname=blog_site_schema;charset=utf8', 'root', 'password');
@@ -36,6 +37,13 @@
             <li><a href="login.php">Login</a></li>
         </ul>
     </nav>
+    <?php
+
+    echo "<h1>" . $_SESSION['user_name'] . "</h1>";
+    echo "<h2>" . $_SESSION['user_id'] . "</h2>";
+    var_dump($_SESSION);
+
+    ?>
 </body>
 
 </html>

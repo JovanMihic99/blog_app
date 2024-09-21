@@ -42,5 +42,35 @@ class AuthController
             }
         }
     }
-    public function login() {}
+    public function login(string $username, string $password)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Get user input
+            $username = trim($_POST['username']);
+            $password = trim($_POST['password']);
+
+            // Validate input
+            if (empty($username) || empty($password)) {
+                echo "Username and password are required.";
+                return;
+            }
+
+            // Attempt to log in the user
+            $user = $this->userModel->getUserByUsername($username);
+
+            if ($user && password_verify($password, $user['password'])) {
+                // Password matches, log in the user
+                // Start a session and set user data
+                session_start();
+                $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['user_name'] = $user['user_name'];
+
+                echo "Login successful!";
+                header("Location: /blog_app/index.php");
+            } else {
+                // Invalid credentials
+                echo "Invalid username or password. Please try again.";
+            }
+        }
+    }
 }

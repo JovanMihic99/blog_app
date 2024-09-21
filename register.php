@@ -5,7 +5,6 @@ require_once 'controllers/AuthController.php';
 
 // Initialize the User model with the database connection
 $userModel = new User($connection);
-
 // Initialize the AuthController with the user model
 $authController = new AuthController($connection);
 

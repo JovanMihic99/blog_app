@@ -41,7 +41,7 @@ class User
     }
     public function getUserByUsername($username)
     {
-        $query = "SELECT * FROM users WHERE user_name = :username LIMIT 1";
+        $query = "SELECT * FROM user WHERE user_name = :username LIMIT 1";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':username', $username);
         $stmt->execute();
