@@ -31,7 +31,7 @@ class Post
     }
     public function getPosts()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM blog_post");
+        $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id;");
         if ($stmt->execute()) {
             // Fetch all results as an associative array
             $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -42,7 +42,7 @@ class Post
 
     public function usernameExists($username)
     {
-        $query = "SELECT * FROM user WHERE user_name = :username LIMIT 1";
+        $query = "SELECT * FROM user WHERE user_name = :username LIMIT 1;";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':username', $username);
         $stmt->execute();
