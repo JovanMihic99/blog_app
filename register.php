@@ -31,6 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <?php
+    include('partials/nav.php'); // Include the navigation 
+    ?>
     <h1>Register</h1>
     <form method="POST" action="register.php">
         <label for="username">Username:</label>

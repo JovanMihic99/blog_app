@@ -16,7 +16,10 @@ session_start();
     include('partials/nav.php'); // Include the navigation 
     ?>
     <?php
-    echo "<h1>" . $_SESSION['user_name'] . "</h1>";
+
+    echo "<h1>Loggde in:" . $_SESSION['user_name'] . "</h1>";
+
+
     ?>
 </body>
 
