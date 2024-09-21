@@ -51,4 +51,34 @@ class Post
         }
         return [];
     }
+    public function get_categories()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM category;");
+        if ($stmt->execute()) {
+            // Fetch all results as an associative array
+            $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $categories; // Return the fetched posts
+        }
+        return [];
+    }
+    public function add_blog($title, $content, $user_id, $category_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $stmt = $this->conn->prepare("INSERT INTO blog_post (title, content, user_id, category_id) VALUES (:title, :content, :user_id, :category_id);");
+
+            // Bind parameters
+            $stmt->bindParam(':title', $title);
+            $stmt->bindParam(':content', $content);
+            $stmt->bindParam(':user_id', $user_id);
+            $stmt->bindParam(':category_id', $category_id);
+
+            // Execute the statement
+            if ($stmt->execute()) {
+                return true; // Add post successful
+            }
+        }
+
+        header("Location: /blog_app/index.php");
+        exit();
+    }
 }

@@ -11,14 +11,19 @@ class BlogController
     }
 
 
-    public function logout()
+    public function add_blog()
     {
-        session_start();
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $user_id = $_SESSION['user_id'];
+        $category_id = $_POST['category'];
 
-        // Unset all session variables
-        $_SESSION = [];
-        // Destroy the session
-        session_destroy();
+        if ($this->blogModel->add_blog($title, $content, $user_id, $category_id)) {
+            echo "Registration successful!";
+            // Redirect or take additional actions (like login)
+        } else {
+            echo "Registration failed. Please try again.";
+        }
 
         header("Location: /blog_app/index.php");
         exit();
