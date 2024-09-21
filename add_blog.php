@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +10,7 @@ session_start();
 <body>
     <?php
     include('partials/nav.php'); // Include the navigation 
+
     ?>
     <?php
 

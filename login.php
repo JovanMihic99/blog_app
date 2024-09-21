@@ -8,42 +8,18 @@ $userModel = new User($connection);
 // Initialize the AuthController with the user model
 $authController = new AuthController($connection);
 
+$title = "Login";
+$content = "<h1>LOGIN CONTENT</h1>"; // Initialize content
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sanitize and validate input
-    // $username = trim($_POST['username']);
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-
-    // Instantiate AuthController with the database connection
-    $authController = new AuthController($connection);
-    $authController->login($username, $password); // Pass the inputs to the method
+    $authController->login(); // Pass the inputs to the method
     die();
 }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
+// Render the view
+ob_start(); // Start output buffering
+include 'views/login_form.php'; // Include the register view
+$content = ob_get_clean(); // Get the content of the view
 
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-
-<body>
-    <?php
-    include('partials/nav.php'); // Include the navigation 
-    ?>
-    <h1>Login</h1>
-    <form method="POST" action="login.php">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        <br>
-        <button type="submit">Login</button>
-    </form>
-</body>
-
-</html>
+// Render the layout
+include 'views/layout.php'; // Include the layout

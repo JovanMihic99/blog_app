@@ -1,3 +1,4 @@
+
 <?php
 require_once 'config/init.php';
 require_once 'models/User.php';
@@ -8,45 +9,22 @@ $userModel = new User($connection);
 // Initialize the AuthController with the user model
 $authController = new AuthController($connection);
 
+// Set the page title and any initial variables
+$title = "Register";
+$content = ""; // Initialize content
 
+// Check if the registration form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sanitize and validate input
-    $username = trim($_POST['username']);
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
-
-    // Instantiate AuthController with the database connection
-    $authController = new AuthController($connection);
-    $authController->register($username, $email, $password); // Pass the inputs to the method
+    $authController->register(); // Call the register method from AuthController
+    header("Location: /blog_app/index.php");
     die();
 }
+
+// Render the view
+ob_start(); // Start output buffering
+include 'views/register_form.php'; // Include the register view
+$content = ob_get_clean(); // Get the content of the view
+
+// Render the layout
+include 'views/layout.php'; // Include the layout
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-
-<body>
-    <?php
-    include('partials/nav.php'); // Include the navigation 
-    ?>
-    <h1>Register</h1>
-    <form method="POST" action="register.php">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        <br>
-        <button type="submit">Register</button>
-    </form>
-</body>
-
-</html>

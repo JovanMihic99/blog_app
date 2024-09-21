@@ -7,3 +7,5 @@ require_once(__DIR__ . '/../controllers/AuthController.php'); // Points to blog_
 // Create a database connection
 $db = new Database();
 $connection = $db->getConnection();
+
+session_start();

@@ -1,23 +1,16 @@
 <?php
-session_start();
-?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+require_once 'config/init.php'; // Include your initialization logic
 
-<body>
-    <?php
-    include('partials/nav.php'); // Include the navigation 
-    ?>
-    <?php
-    echo "<h1>" . $_SESSION['user_name'] . "</h1>";
-    ?>
-</body>
+// Set the page title and any initial variables
+$title = "My Blog Website";
+$content = `<p>This is the homepage of your blog application.</p>`;
 
-</html>
+// Render the view
+ob_start(); // Start output buffering
+include 'views/home.php'; // Include the specific view for the homepage
+$content = ob_get_clean(); // Get the content of the view
+
+// Render the layout
+include 'views/layout.php'; // Include the layout
