@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($title); ?></title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to any CSS -->
+    <link rel="stylesheet" href="/blog_app/public/css/styles.css">
 </head>
 
 <body>
