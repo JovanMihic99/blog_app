@@ -6,7 +6,11 @@ $title = "Login";
 $content = "<h1>LOGIN CONTENT</h1>"; // Initialize content
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $authController->login(); // Pass the inputs to the method
+    // Get user input
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    $authController->login($username, $password); // Pass the inputs to the method
     die();
 }
 

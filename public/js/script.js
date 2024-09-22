@@ -1,23 +1,4 @@
 $(document).ready(function () {
-  //   $(".post-wrapper").hover(
-  //     function () {
-  //       $(this).filter(":not(:animated)").animate(
-  //         {
-  //           marginLeft: "9px",
-  //         },
-  //         "slow"
-  //       );
-  //       // This only fires if the row is not undergoing an animation when you mouseover it
-  //     },
-  //     function () {
-  //       $(this).animate(
-  //         {
-  //           marginLeft: "0px",
-  //         },
-  //         "slow"
-  //       );
-  //     }
-  //   );
   console.log(
     "localhost:8000/blog_app/post.php?post_id=" + getQueryParam("blog_id")
   );

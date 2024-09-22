@@ -10,44 +10,37 @@ class AuthController
         $this->userModel = new User($db);
     }
 
-    public function register()
+    public function register($username, $email, $password)
     {
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (!$_SERVER['REQUEST_METHOD'] === 'POST') {
+            die();
+        }
 
+        // Validate input
+        if (empty($username) || empty($password)) {
+            echo "Username and password are required.";
+            return;
+        }
 
-            // Get user input
-            $username = trim($_POST['username']);
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
+        // Check if username exists
+        if ($this->userModel->usernameExists($username)) {
+            echo "Username already exists. Please choose another one.";
+            return;
+        }
 
-            // Validate input
-            if (empty($username) || empty($password)) {
-                echo "Username and password are required.";
-                return;
-            }
+        // Attempt to register the user
+        if ($this->userModel->register($username, $email, $password)) {
+            echo "Registration successful!";
 
-            // Check if username exists
-            if ($this->userModel->usernameExists($username)) {
-                echo "Username already exists. Please choose another one.";
-                return;
-            }
-
-            // Attempt to register the user
-            if ($this->userModel->register($username, $email, $password)) {
-                echo "Registration successful!";
-                // Redirect or take additional actions (like login)
-            } else {
-                echo "Registration failed. Please try again.";
-            }
+            // Redirect or take additional actions (like login)
+        } else {
+            echo "Registration failed. Please try again.";
         }
     }
-    public function login()
+    public function login($username, $password)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Get user input
-            $username = trim($_POST['username']);
-            $password = trim($_POST['password']);
 
             // Validate input
             if (empty($username) || empty($password)) {
@@ -67,12 +60,16 @@ class AuthController
 
                 echo "Login successful!";
                 header("Location: /blog_app/index.php");
+                exit();
+                // header("Location:javascript://history.go(-1)");
             } else {
                 // Invalid credentials
                 echo "Invalid username or password. Please try again.";
                 header("Location: /blog_app/login.php");
+                exit();
             }
         }
+        die();
     }
     public function logout()
     {

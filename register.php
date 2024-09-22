@@ -7,7 +7,11 @@ $content = ""; // Initialize content
 
 // Check if the registration form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $authController->register(); // Call the register method from AuthController
+    $user_name = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    $authController->register($user_name, $email, $password); // Call the register method from AuthController
+    $authController->login($user_name, $password); // login the new user
     header("Location: /blog_app/index.php");
     die();
 }
