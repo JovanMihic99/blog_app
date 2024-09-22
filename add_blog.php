@@ -11,7 +11,11 @@ $content = ""; // Initialize content
 $categories = $blogPostModel->get_categories();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $blogController->add_blog();
+    $title = $_POST["title"];
+    $content = $_POST["content"];
+    $user_id = $_SESSION["user_id"];
+    $category_id = $_POST["category_id"];
+    $blogController->add_blog($title, $content, $user_id, $category_id);
     header("Location: /blog_app/index.php");
     die();
 }

@@ -11,9 +11,13 @@ $title = $post['title'];
 $content = $post['content'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $blogController->add_comment(); // Pass the inputs to the method
+    $content = $_POST['content'];
+    $user_id = $_SESSION['user_id'];
+    $post_id = $_GET['blog_id'];
+    $blogController->add_comment($content, $user_id, $post_id); // Pass the inputs to the method
     die();
 }
+
 
 // Render the view
 ob_start(); // Start output buffering

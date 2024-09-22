@@ -3,7 +3,7 @@ require_once 'config/init.php';
 
 
 $blogPostModel = new Post($connection);
-$posts = $blogPostModel->getPosts(); // Fetch posts
+$posts = $blogPostModel->get_posts(); // Fetch posts
 
 // Set the page title and any initial variables
 $title = "My Blog Website";

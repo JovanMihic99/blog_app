@@ -8,12 +8,8 @@ class Post
         $this->conn = $db;
     }
 
-    public function add_post()
+    public function add_post($title, $content, $user_id, $category_id)
     {
-        $title = $_POST("title");
-        $content = $_POST("content");
-        $user_id = $_POST("user_id");
-        $category_id = $_POST("category_id");
         $stmt = $this->conn->prepare("INSERT INTO blog_post (title, content, user_id, category_id) VALUES (:title, :content, :user_id, :category);");
 
         // Bind parameters
@@ -29,7 +25,7 @@ class Post
 
         return false; // Add post failed
     }
-    public function getPosts()
+    public function get_posts()
     {
         $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id;");
         if ($stmt->execute()) {
@@ -48,6 +44,15 @@ class Post
             return $post;
         }
         return null;
+    }
+    public function get_comment($id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM comment WHERE comment_id = :comment_id;");
+        $stmt->bindParam(':comment_id', $id);
+        if ($stmt->execute()) {
+            $comment = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $comment;
+        }
     }
     public function get_comments($id)
     {
@@ -75,9 +80,32 @@ class Post
             }
         }
     }
-    public function get_post_by_user_id()
+    public function delete_comment($comment_id, $user_id)
     {
-        $user_id = $_GET['user_id'];
+
+        $stmt = $this->conn->prepare("SELECT * FROM comment WHERE comment_id = :comment_id AND user_id = :user_id;");
+
+        // Bind parameters
+        $stmt->bindParam(':comment_id', $comment_id);
+        $stmt->bindParam(':user_id', $user_id);
+
+        if ($stmt->execute() && $stmt->rowCount() > 0) {
+            // If the comment exists and belongs to the user, proceed with deletion
+            $deleteStmt = $this->conn->prepare("DELETE FROM comment WHERE comment_id = :comment_id");
+            $deleteStmt->bindParam(':comment_id', $comment_id);
+
+            if ($deleteStmt->execute()) {
+                header("Location: .");
+            } else {
+                echo "Error deleting comment.";
+            }
+        } else {
+            echo "You do not have permission to delete this comment.";
+        }
+    }
+    public function get_post_by_user_id($user_id)
+    {
+
         $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id WHERE bp.user_id = :user_id;");
         $stmt->bindParam(':user_id', $user_id);
         if ($stmt->execute()) {
@@ -97,7 +125,7 @@ class Post
         }
         return [];
     }
-    public function add_blog($title, $content, $user_id, $category_id)
+    public function post_blog($title, $content, $user_id, $category_id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $this->conn->prepare("INSERT INTO blog_post (title, content, user_id, category_id) VALUES (:title, :content, :user_id, :category_id);");

@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="category">Select a category:</label>
-            <select id="category" name="category" required>
+            <select id="category" name="category_id" required>
                 <?php foreach ($categories as $category): ?>
                     <option value="<?php echo htmlspecialchars($category['category_id']); ?>">
                         <?php echo htmlspecialchars($category['name']); ?>

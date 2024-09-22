@@ -18,6 +18,22 @@ $(document).ready(function () {
   //       );
   //     }
   //   );
+  console.log(
+    "localhost:8000/blog_app/post.php?post_id=" + getQueryParam("blog_id")
+  );
+  $("#btn-comment-delete").click(
+    $.ajax({
+      // call a DELETE endpoint of API
+      url:
+        "localhost:8000/blog_app/post.php?post_id=" + getQueryParam("blog_id"),
+      method: "DELETE",
+      success: function () {
+        // redirect to another page
+        window.location.href =
+          "/blog_app/post.php?post_id=" + getQueryParam("blog_id");
+      },
+    })
+  );
 
   // Add hover animation for blog posts
   $(".blog-post").hover(
