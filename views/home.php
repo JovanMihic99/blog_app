@@ -1,5 +1,5 @@
 <h1><?php echo htmlspecialchars($title); ?></h1>
-<h2><?php echo $_SESSION["user_name"] ?></h2>
+<h2 class="username">Logged in as "<?php echo $_SESSION["user_name"] ?>"</h2>
 
 
 <?php if (!empty($posts)): ?>
@@ -10,8 +10,8 @@
                 <div class="blog-post">
                     <li>
 
-                        <a class="username" href="/blog_app/user.php?user_id=<?php echo htmlspecialchars($post['user_id']) ?>">
-                            <?php echo   htmlspecialchars($post['user_name']) ?>
+                        <a href="/blog_app/user.php?user_id=<?php echo htmlspecialchars($post['user_id']) ?>">
+                            <?php echo htmlspecialchars($post['user_name']) ?>
                         </a>
                         <br>
 

@@ -1,7 +1,7 @@
 /* General Styles */
 html,
 body {
-  height: 100%;
+  min-height: 100vh !important;
   margin: 0;
 
   /* background-image: url("../img/background3.jpg"); */
@@ -12,6 +12,9 @@ body {
   flex-direction: column;
 }
 
+.username {
+  text-align: center;
+}
 /* Parallax bacground effect */
 .parallax-background {
   position: fixed; /* Keep it fixed for the parallax effect */
@@ -98,6 +101,7 @@ footer {
   padding: 10px 0;
   background-color: #333;
   color: white;
+  margin-top: auto !important;
 }
 
 /* Form style */
