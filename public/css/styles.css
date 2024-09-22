@@ -30,7 +30,8 @@ body {
   position: relative;
   z-index: 1; /* Make sure it stays above the parallax background */
   padding-top: 60px; /* Adjust padding as needed */
-  background-color: rgba(255, 255, 255, 0.719) !important;
+  /* background-color: rgba(255, 255, 255, 0.719) !important; */
+  background-color: whitesmoke;
 }
 /* Navigation Styles */
 nav {
@@ -139,8 +140,20 @@ button:hover {
 }
 
 /* Posts Styles */
-.posts-wrapper > ul {
-  list-style-type: none;
+.posts-wrapper > ul,
+.comments-wrapper ul {
+  list-style-type: none !important;
+  padding: 0;
+}
+.comment-container {
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 2px;
+  margin-bottom: 4px;
+}
+.comment-content {
+  margin: 0;
+  padding-left: 1rem;
 }
 nav ul li a.active {
   color: #ffffff; /* Text color for active link */
