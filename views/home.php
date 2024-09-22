@@ -10,7 +10,7 @@
                 <div class="blog-post">
                     <li>
 
-                        <a href="/blog_app/user.php?user_id=<?php echo htmlspecialchars($post['user_id']) ?>">
+                        <a class="post-username" href="/blog_app/user.php?user_id=<?php echo htmlspecialchars($post['user_id']) ?>">
                             <?php echo htmlspecialchars($post['user_name']) ?>
                         </a>
                         <br>
