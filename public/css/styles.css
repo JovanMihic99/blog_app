@@ -4,11 +4,7 @@ body {
   height: 100%;
   margin: 0;
 
-  background-image: url("../img/background3.jpg");
-  background-color: #cccccc;
-  background-size: cover; /* Scales the image to cover the entire area */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat;
+  /* background-image: url("../img/background3.jpg"); */
 
   font-family: Arial, sans-serif;
   color: #333;
@@ -16,6 +12,26 @@ body {
   flex-direction: column;
 }
 
+/* Parallax bacground effect */
+.parallax-background {
+  position: fixed; /* Keep it fixed for the parallax effect */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Full height to cover the viewport */
+  background-image: url("../img/background3.jpg");
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+  z-index: -1; /* Ensure it stays behind other content */
+}
+.content {
+  position: relative;
+  z-index: 1; /* Make sure it stays above the parallax background */
+  padding-top: 60px; /* Adjust padding as needed */
+  background-color: rgba(255, 255, 255, 0.719) !important;
+}
 /* Navigation Styles */
 nav {
   background-color: #333;
@@ -88,7 +104,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center the items horizontally */
-  max-width: 400px; /* Set a maximum width for the form */
+  max-width: 90%; /* Set a maximum width for the form */
   margin: 0 auto; /* Center the form on the page */
   padding: 20px;
   background-color: #fff;
@@ -145,4 +161,211 @@ nav ul li a.active {
   margin-bottom: 10px;
   border: 1px solid #ddd;
   transition: transform 0.3s, background-color 0.3s; /* Smooth transition for scaling and color */
+}
+.posts-wrapper > ul {
+  padding: 0;
+}
+/* Responsive Navigation */
+nav {
+  background-color: #333;
+  padding: 10px 20px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  padding: 5px 10px;
+  transition: background 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+/* Hamburger Menu Button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+nav ul li {
+  margin: 0 5px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 15px;
+  display: block;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+  border-radius: 4px;
+} */
+
+/* Responsive Main Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Blog Posts */
+.blog-post {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Forms */
+/* form {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+form input,
+form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #555;
+} */
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  width: 100%;
+}
+
+/* Media Queries for Responsiveness */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+p.post-content {
+  font-size: 1rem;
+}
+.nav-links a,
+.logo {
+  font-size: 1rem;
+}
+.content form input {
+  width: 30vw;
+}
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  p.post-content {
+    font-size: 3rem;
+  }
+  .nav-links a,
+  .logo {
+    font-size: 2rem;
+  }
+  .content form input {
+    width: 40vw;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+  p.post-content {
+    font-size: 2rem;
+  }
+  .nav-links a,
+  .logo {
+    font-size: 0.85rem;
+  }
+  .content form input {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  p.post-content {
+    font-size: 1rem;
+  }
+  .nav-links a,
+  .logo {
+    font-size: 0.8rem;
+  }
+  .content form input {
+    width: 100%;
+  }
 }

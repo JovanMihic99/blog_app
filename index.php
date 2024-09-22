@@ -6,7 +6,7 @@ $blogPostModel = new Post($connection);
 $posts = $blogPostModel->get_posts(); // Fetch posts
 
 // Set the page title and any initial variables
-$title = "Blog posts";
+$title = "Bloggy blog posts";
 $content = "";
 
 // Render the view

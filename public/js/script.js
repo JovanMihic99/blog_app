@@ -1,4 +1,15 @@
 $(document).ready(function () {
+  // Paralax bacground effect
+  $(function () {
+    var $el = $(".parallax-background");
+    $(window).on("scroll", function () {
+      var scroll = $(document).scrollTop();
+      $el.css({
+        "background-position": "50% " + -0.4 * scroll + "px",
+      });
+    });
+  });
+
   console.log(
     "localhost:8000/blog_app/post.php?post_id=" + getQueryParam("blog_id")
   );

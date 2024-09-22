@@ -25,7 +25,7 @@
                     </a>
                     <small>Commented on <?php echo htmlspecialchars($comment['created_at']); ?></small>
                     <br>
-                    <p><?php echo htmlspecialchars($comment['content']) ?></p>
+                    <p class="comment-content"><?php echo htmlspecialchars($comment['content']) ?></p>
 
                     <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $comment['user_id']): ?>
                         <a href="/blog_app/delete_comment.php?comment_id=<?php echo $comment['comment_id']; ?>"

@@ -10,15 +10,19 @@
 </head>
 
 <body>
-    <?php include 'partials/nav.php'; ?> <!-- Include the navigation -->
+    <div class="parallax-background"></div>
+    <div class="main-content">
 
-    <div class="content">
-        <?php echo $content; ?> <!-- The view content gets injected here -->
+        <?php include 'partials/nav.php'; ?> <!-- Include the navigation -->
+
+        <div class="content">
+            <?php echo $content; ?> <!-- The view content gets injected here -->
+        </div>
+
+        <footer>
+            <p>&copy; <?php echo date("Y"); ?> Blog Site</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>&copy; <?php echo date("Y"); ?> Blog Site</p>
-    </footer>
 </body>
 
 </html>

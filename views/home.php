@@ -19,7 +19,7 @@
 
 
 
-                            <p><?php echo htmlspecialchars(substr($post['content'], 0, 250) . '...'); ?></p>
+                            <p class="post-content"><?php echo htmlspecialchars(substr($post['content'], 0, 250) . '...'); ?></p>
                         </a>
                     </li>
                 </div>
