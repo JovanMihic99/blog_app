@@ -29,12 +29,12 @@
                         <p class="comment-content"><?php echo htmlspecialchars($comment['content']) ?></p>
 
                         <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $comment['user_id']): ?>
-                            <a href="/blog_app/delete_comment.php?comment_id=<?php echo $comment['comment_id']; ?>"
+                            <a href="/blog_app/delete_comment.php?comment_id=<?php echo $comment['comment_id']; ?>&blog_id=<?php echo $blog_id ?>"
                                 class="delete-comment"
                                 onclick="return confirm('Are you sure you want to delete this comment?');">
                                 DELETE
                             </a>
-                            <?php echo $_SESSION['user_id']; ?>
+
                         <?php endif; ?>
 
 

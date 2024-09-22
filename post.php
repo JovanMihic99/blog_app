@@ -4,6 +4,7 @@ require_once 'controllers/BlogController.php';
 $blogPostModel = new Post($connection);
 $post = $blogPostModel->get_post($_GET['blog_id']); // Fetch post
 $comments = $blogPostModel->get_comments($_GET['blog_id']); // Fetch comments
+$blog_id = $_GET['blog_id'];
 $blogController = new BlogController($connection);
 
 // Set the page title and any initial variables

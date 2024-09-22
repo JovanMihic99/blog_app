@@ -146,14 +146,37 @@ button:hover {
   padding: 0;
 }
 .comment-container {
-  border: 2px solid #ddd;
+  /* border: 0px solid #ddd; */
   border-radius: 5px;
-  padding: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 5px;
   margin-bottom: 4px;
+  position: relative;
 }
 .comment-content {
   margin: 0;
   padding-left: 1rem;
+}
+/* Style .delete-comment link as a button */
+.delete-comment {
+  display: inline-block;
+  padding: 8px 16px;
+  color: #fff;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Hover effect */
+.delete-comment:hover {
+  background-color: #c0392b; /* Darker red on hover */
 }
 nav ul li a.active {
   color: #ffffff; /* Text color for active link */

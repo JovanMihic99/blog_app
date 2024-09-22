@@ -80,7 +80,7 @@ class Post
             }
         }
     }
-    public function delete_comment($comment_id, $user_id)
+    public function delete_comment($comment_id, $user_id, $post_id)
     {
 
         $stmt = $this->conn->prepare("SELECT * FROM comment WHERE comment_id = :comment_id AND user_id = :user_id;");
@@ -95,7 +95,7 @@ class Post
             $deleteStmt->bindParam(':comment_id', $comment_id);
 
             if ($deleteStmt->execute()) {
-                header("Location: .");
+                header('Location: /blog_app/post.php?blog_id=' .  $post_id);
             } else {
                 echo "Error deleting comment.";
             }
