@@ -140,9 +140,34 @@ class Post
             if ($stmt->execute()) {
                 return true; // Add post successful
             }
+            die();
         }
 
         header("Location: /blog_app/index.php");
         exit();
+    }
+    public function delete_blog($post_id, $user_id)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM blog_post WHERE blog_id = :post_id; AND user_id = :user_id");
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // Bind parameters
+        $stmt->bindParam(':post_id', $post_id);
+        $stmt->bindParam(':user_id', $user_id);
+
+
+        if ($rows > 0) {
+            // If the comment exists and belongs to the user, proceed with deletion
+            $deleteStmt = $this->conn->prepare("DELETE FROM blog_post WHERE blog_id = :post_id");
+            $deleteStmt->bindParam(':post_id', $post_id);
+
+            if ($deleteStmt->execute()) {
+                header('Location: index.php');
+                exit();
+            } else {
+                echo "Error deleting comment.";
+            }
+        } else {
+            echo "You do not have permission to delete this comment.";
+        }
     }
 }

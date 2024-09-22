@@ -5,17 +5,15 @@ $blogController = new BlogController($connection);
 
 if (!$_SERVER['REQUEST_METHOD'] === "POST") {
     header("Location: index.php");
-    exit();
-}
-// Check if the user is logged in and if the comment_id is provided
-if (!isset($_SESSION['user_id']) || !isset($_GET['comment_id'])) {
-
-
-
-    // exit();
+    die();
 }
 
-$blogController->remove_comment($_GET['comment_id'], $_SESSION['user_id'], $_GET['blog_id']);
+if (!$post['user-id'] === $_SESSION['user_id']) {
+    header("Location: /post.php?blog_id=" . $_GET['blog_id']);
+    die();
+}
+
+$blogController->remove_blog($_GET['blog_id'], $_SESSION['user_id']);
 
 // var_dump($_GET['blog_id']);
 // exit

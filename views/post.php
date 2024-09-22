@@ -1,4 +1,12 @@
 <h1><?php echo htmlspecialchars($title); ?></h1>
+<?php if (true): ?>
+    <a href="/blog_app/delete_blog.php?blog_id=<?php echo $post['blog_id']; ?>"
+        class="delete-comment"
+        onclick="return confirm('Are you sure you want to delete this post?');">
+        DELETE POST
+    </a>
+
+<?php endif; ?>
 <p class="blog-text"><?php echo htmlspecialchars($content); ?></p>
 <div class="comments-wrapper">
     <h3>Comments</h3>

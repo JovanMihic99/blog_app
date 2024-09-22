@@ -41,6 +41,16 @@ class BlogController
             echo "Remove comment post successful!";
             die();
         } else {
+            echo "Remove comment failed. Please try again.";
+            die();
+        }
+    }
+    public function remove_blog($blog_id, $user_id)
+    {
+        if ($this->blogModel->delete_blog($blog_id, $user_id)) {
+            echo "Remove blog post successful!";
+            die();
+        } else {
             echo "Remove blog post failed. Please try again.";
             die();
         }
