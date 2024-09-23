@@ -72,4 +72,11 @@ $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
   }
+  // navbar hamburger toggle
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+
+  $(".hamburger").click(function () {
+    $(".nav-links").slideToggle(); // Toggle with sliding effect
+  });
 });

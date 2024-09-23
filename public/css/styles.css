@@ -8,6 +8,15 @@ body {
   display: flex;
   flex-direction: column;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #007bff;
+}
 
 .username {
   text-align: center;
@@ -26,24 +35,6 @@ body {
   background-size: cover;
   background-color: black;
   z-index: -1;
-}
-
-.content {
-  background-image: url("../img/leaves_tiles.jpg");
-  background-repeat: repeat;
-  background-size: 100px;
-  position: relative;
-  min-height: 90vh;
-  z-index: 1;
-  padding-top: 60px;
-  background-color: whitesmoke;
-  flex: 1;
-  max-width: 80%;
-  width: 70%;
-  margin: 20px auto;
-  padding: 20px;
-  box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 25px;
 }
 
 /* Text Styles */
@@ -78,64 +69,6 @@ p {
   font-weight: bold;
 }
 
-/* Navigation Styles */
-nav {
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-}
-
-.nav-links li {
-  margin: 0 15px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: white;
-  padding: 5px 10px;
-  transition: background 0.3s ease;
-}
-
-.nav-links a:hover {
-  background-color: #555;
-  border-radius: 5px;
-}
-
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: #007bff;
-}
-
-nav ul li a.active {
-  color: #ffffff;
-  background-color: #007bff;
-  border-radius: 5px;
-  padding: 5px 10px;
-}
-
 /* Footer Styles */
 footer {
   text-align: center;
@@ -153,16 +86,26 @@ footer {
   max-width: 90%;
   margin: 0 auto;
   padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .filter-form {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   max-width: 100%;
+  font-size: 1.8rem;
   margin: 1rem auto;
   padding: 5px;
 }
+.filter-form select {
+  margin: 1rem;
+  font-size: 1.8rem;
+}
+
+.filter-form button {
+  margin: 1rem;
+  font-size: 1.65rem;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -209,7 +152,7 @@ button:hover {
 
 .comment-container {
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   padding: 5px;
   margin-bottom: 4px;
   position: relative;
@@ -264,24 +207,131 @@ button:hover {
 .delete-comment:hover {
   background-color: #c0392b;
 }
+.content {
+  background-image: url("../img/leaves_tiles.jpg");
+  background-repeat: repeat;
+  background-size: 100px;
+  position: relative;
+  min-height: 90vh;
+  z-index: 1;
+  padding-top: 60px;
+  background-color: whitesmoke;
+  flex: 1;
+  max-width: 90%;
+  width: 70%;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 25px;
+}
+
+/* Navbar Styles */
+nav {
+  background-color: #333;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  padding: 10px 20px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Styles */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+/* Hamburger Button Styles */
+.hamburger {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  height: 3px;
+  width: 30px;
+  background-color: white;
+  color: #333; /* Color of the bars */
+  margin: 4px 0;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  background-color: #333;
+  display: flex;
+  margin: 0;
+  padding: 1rem;
+  z-index: 100;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem; /* Adjust font size */
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #007bff; /* Color on hover */
+}
+.nav-links a.active {
+  color: #ffffff;
+  background-color: #007bff;
+  border-radius: 5px;
+  padding: 0px 10px;
+}
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1024px) {
   h1 {
     font-size: 3rem;
   }
-
-  p.post-content {
-    font-size: 3rem;
+  .post-username {
+    font-size: 1.5rem;
   }
-
+  p.post-content {
+    font-size: 1.5rem;
+  }
+  .filter-form {
+    flex-direction: column;
+  }
+  .filter-form button,
+  .filter-form select {
+    width: 100%;
+  }
+  .input-form input,
+  .input-form textarea {
+    width: 100%;
+    font-size: 2rem;
+    padding: 0;
+  }
+  .input-form label,
+  .input-form select {
+    font-size: 2rem;
+  }
+  .input-form button {
+    margin-top: 5px;
+    font-size: 3rem;
+    width: 100%;
+  }
+  .input-form .error-message {
+    font-size: 2rem;
+  }
   .nav-links a,
   .logo {
     font-size: 2rem;
-  }
-
-  .content form input {
-    width: 40vw;
   }
 }
 
@@ -290,17 +340,38 @@ button:hover {
     font-size: 2rem;
   }
 
-  .nav-links a,
-  .logo {
-    font-size: 0.85rem;
+  .nav-links {
+    display: none; /* Hide links by default */
+    flex-direction: column; /* Stack links vertically */
+    position: absolute;
+    top: 60px; /* Position below the navbar */
+    right: 0;
+    width: 100%; /* Full width */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+  .nav-links > li > a {
+    margin: 1rem;
   }
 
+  .nav-links.active {
+    display: flex; /* Show links when active */
+  }
+
+  .hamburger {
+    display: flex; /* Show hamburger on smaller screens */
+  }
   .content form input {
     width: 60vw;
   }
 }
 
 @media (max-width: 480px) {
+  .content {
+    width: 80%;
+  }
+  .filter-form a {
+    font-size: 2rem;
+  }
   h1 {
     font-size: 2rem;
   }
@@ -308,10 +379,8 @@ button:hover {
   p.post-content {
     font-size: 1rem;
   }
-
-  .nav-links a,
-  .logo {
-    font-size: 0.8rem;
+  .filter-form {
+    font-size: 5rem !important;
   }
 
   .content form input {
