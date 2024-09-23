@@ -14,7 +14,7 @@ Place this project in your /var/www/html/ directory on your php server.
 
 ### Creating the database
 
-Use the database script (provided in this directory) to create the database
+Use the database script (provided in "scripts/blog_site_schema.sql") to create the database.
 
 ## Configuration
 
