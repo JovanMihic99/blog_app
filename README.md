@@ -1,4 +1,5 @@
-# Project requirements
+### PHP blog application
+## Project requirements
 **PHP 8.1.2** and **MySQL 8.0.39**
 
 ## How to set up
