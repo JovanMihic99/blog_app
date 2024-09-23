@@ -1,5 +1,5 @@
 # Project requirements
-**PHP 8.1.2** \n**MySQL 8.0.39**
+**PHP 8.1.2** and **MySQL 8.0.39**
 
 # How to set up
 Make sure your PHP server and MySQL server are using the proper versions.
