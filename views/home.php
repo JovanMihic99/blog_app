@@ -2,7 +2,18 @@
 <?php if (isset($_SESSION['user_id'])): ?>
     <h2 class="username">Logged in as "<?php echo $_SESSION["user_name"] ?>"</h2>
 <?php endif; ?>
-
+<form action="index.php" method="POST">
+    <label for="category">Select a category:</label>
+    <select id="category" name="category_id" required>
+        <?php foreach ($categories as $category): ?>
+            <option
+                value="<?php echo htmlspecialchars($category['category_id']); ?>">
+                <?php echo htmlspecialchars($category['name']); ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+    <button type="submti">Filter</button>
+</form>
 <?php if (!empty($posts)): ?>
 
     <div class="posts-wrapper">

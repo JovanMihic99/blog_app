@@ -7,7 +7,7 @@
         DELETE POST
     </a>
     <a href="/blog_app/edit_blog.php?blog_id=<?php echo $post['blog_id']; ?>"
-        class="delete-post"
+        class="edit-post"
         onclick="return confirm('Are you sure you want to edit this post?');">
         Edit
     </a>

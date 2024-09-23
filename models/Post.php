@@ -25,9 +25,15 @@ class Post
 
         return false; // Add post failed
     }
-    public function get_posts()
+    public function get_posts($category_id = null)
     {
-        $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id;");
+
+        if ($category_id) {
+            $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id WHERE category_id = :category_id;");
+            $stmt->bindParam(':category_id', $category_id);
+        } else {
+            $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id;");
+        }
         if ($stmt->execute()) {
             // Fetch all results as an associative array
             $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);

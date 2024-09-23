@@ -4,7 +4,12 @@ require_once 'config/init.php';
 
 $blogPostModel = new Post($connection);
 $posts = $blogPostModel->get_posts(); // Fetch posts
+$categories = $blogPostModel->get_categories();
 
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    $cateogry_id = $_POST['category_id'];
+    $posts = $blogPostModel->get_posts($cateogry_id); // Fetch posts from a certain category
+}
 // Set the page title and any initial variables
 $title = "Bloggy blog posts";
 $content = "";

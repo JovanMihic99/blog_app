@@ -11,13 +11,17 @@
 
         <div class="form-group">
             <label for="content">Content:</label>
-            <textarea id="content" name="content" rows="10" required value="<?php echo $blog['content'] ?>"></textarea>
+            <textarea id="content" name="content" rows="10" required><?php echo $blog['content'] ?></textarea>
         </div>
         <div class=" form-group">
             <label for="category">Select a category:</label>
             <select id="category" name="category_id" required>
                 <?php foreach ($categories as $category): ?>
-                    <option value="<?php echo htmlspecialchars($category['category_id']); ?>">
+                    <option
+                        value="<?php echo htmlspecialchars($category['category_id']); ?>"
+                        <?php if ($blog['category_id'] === $category['category_id']): ?>
+                        selected
+                        <?php endif; ?>>
                         <?php echo htmlspecialchars($category['name']); ?>
                     </option>
                 <?php endforeach; ?>
