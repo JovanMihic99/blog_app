@@ -10,6 +10,9 @@ Place this project in your /var/www/html/ directory.
 ### Creating the database
 Use the database script (provided in this directory) to create the database
 
+## Configuration
+Navigate to config/config.php and replace the dummy data with your Hostname, Username, Database and Password
+
 ### Using the app
 Navigate to "http://localhost:8000/blog_app" in your browser.
 
