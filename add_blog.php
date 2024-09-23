@@ -4,7 +4,7 @@ require_once 'config/init.php';
 require_once 'controllers/BlogController.php';
 $blogController = new BlogController($connection);
 $blogPostModel = new Post($connection);
-
+$action = "add"; // to change the script which gets executed on the form, because the form is being used for editing and adding
 // Set the page title and any initial variables
 $title = "Register";
 $content = ""; // Initialize content

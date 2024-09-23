@@ -1,7 +1,7 @@
 <div class="form-container">
     <h2>Add New Blog Post</h2>
 
-    <form action="/blog_app/edit_blog.php?blog_id=<?php echo $blog['blog_id'] ?>" method="POST">
+    <form action="/blog_app/<?php echo $action ?>_blog.php?blog_id=<?php echo $blog['blog_id'] ?>" method="POST">
         <input type="hidden" name="action" value="add_post">
 
         <div class="form-group">
@@ -19,7 +19,7 @@
                 <?php foreach ($categories as $category): ?>
                     <option
                         value="<?php echo htmlspecialchars($category['category_id']); ?>"
-                        <?php if ($blog['category_id'] === $category['category_id']): ?>
+                        <?php if (isset($blog) && $blog['category_id'] === $category['category_id']): ?>
                         selected
                         <?php endif; ?>>
                         <?php echo htmlspecialchars($category['name']); ?>

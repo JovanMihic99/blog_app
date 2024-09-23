@@ -25,8 +25,9 @@
                         <a class="post-username" href="/blog_app/user.php?user_id=<?php echo htmlspecialchars($post['user_id']) ?>">
                             <?php echo htmlspecialchars($post['user_name']) ?>
                         </a>
-                        <br>
-
+                        <p class="category">
+                            <?php echo $blogPostModel->get_category_name($post['category_id']) ?>
+                        </p>
                         <a href="/blog_app/post.php?blog_id=<?php echo htmlspecialchars($post['blog_id']) ?>">
                             <h2><?php echo htmlspecialchars($post['title']); ?></h2>
 

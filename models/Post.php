@@ -28,11 +28,11 @@ class Post
     public function get_posts($category_id = null)
     {
 
-        if ($category_id) {
-            $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id WHERE category_id = :category_id;");
+        if ($category_id) { // if a category id is provided only return blogs from that category
+            $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id WHERE category_id = :category_id  ORDER BY created_timestamp DESC;");
             $stmt->bindParam(':category_id', $category_id);
-        } else {
-            $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id;");
+        } else { // if not just return all of them
+            $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id ORDER BY created_timestamp DESC;");
         }
         if ($stmt->execute()) {
             // Fetch all results as an associative array
@@ -43,10 +43,20 @@ class Post
     }
     public function get_post($id)
     {
-        $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id WHERE blog_id = :blog_id;");
+        $stmt = $this->conn->prepare("SELECT bp.*, u.user_name FROM blog_post AS bp JOIN user AS u ON bp.user_id = u.user_id WHERE blog_id = :blog_id");
         $stmt->bindParam(':blog_id', $id);
         if ($stmt->execute()) {
             $post = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $post;
+        }
+        return null;
+    }
+    public function get_category_name($id)
+    {
+        $stmt = $this->conn->prepare("SELECT name FROM category WHERE category_id = :category_id;");
+        $stmt->bindParam(':category_id', $id);
+        if ($stmt->execute()) {
+            $post = $stmt->fetchColumn();
             return $post;
         }
         return null;
