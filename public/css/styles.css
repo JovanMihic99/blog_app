@@ -216,7 +216,8 @@ button:hover {
 }
 
 /* Style .delete-comment link as a button */
-.delete-comment {
+.delete-comment,
+.delete-post {
   display: inline-block;
   padding: 8px 16px;
   color: #fff;

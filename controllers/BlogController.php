@@ -23,6 +23,26 @@ class BlogController
         header("Location: /blog_app/index.php");
         exit();
     }
+    public function edit_blog($blog_id, $title, $content, $user_id, $category_id)
+    {
+        if ($this->blogModel->update_post($blog_id, $title, $content, $user_id, $category_id)) {
+            echo "Update blog succesful!";
+            header("Location: /blog_app/index.php");
+            die();
+        } else {
+            echo "Add blog post failed. Please try again.";
+        }
+    }
+    public function remove_blog($blog_id, $user_id)
+    {
+        if ($this->blogModel->delete_blog($blog_id, $user_id)) {
+            echo "Remove blog post successful!";
+            die();
+        } else {
+            echo "Remove blog post failed. Please try again.";
+            die();
+        }
+    }
 
     public function add_comment($content, $user_id, $post_id)
     {
@@ -42,16 +62,6 @@ class BlogController
             die();
         } else {
             echo "Remove comment failed. Please try again.";
-            die();
-        }
-    }
-    public function remove_blog($blog_id, $user_id)
-    {
-        if ($this->blogModel->delete_blog($blog_id, $user_id)) {
-            echo "Remove blog post successful!";
-            die();
-        } else {
-            echo "Remove blog post failed. Please try again.";
             die();
         }
     }

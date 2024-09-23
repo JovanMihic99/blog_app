@@ -11,7 +11,7 @@ $blogController = new BlogController($connection);
 $title = $post['title'];
 $content = $post['content'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { // post a comment
     $content = $_POST['content'];
     $user_id = $_SESSION['user_id'];
     $post_id = $_GET['blog_id'];

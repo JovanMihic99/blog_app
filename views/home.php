@@ -1,6 +1,7 @@
 <h1><?php echo htmlspecialchars($title); ?></h1>
-<h2 class="username">Logged in as "<?php echo $_SESSION["user_name"] ?>"</h2>
-
+<?php if (isset($_SESSION['user_id'])): ?>
+    <h2 class="username">Logged in as "<?php echo $_SESSION["user_name"] ?>"</h2>
+<?php endif; ?>
 
 <?php if (!empty($posts)): ?>
 

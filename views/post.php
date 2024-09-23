@@ -1,11 +1,16 @@
 <h1><?php echo htmlspecialchars($title); ?></h1>
-<?php if (true): ?>
+<!-- fix this -->
+<?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $post['user_id']): ?>
     <a href="/blog_app/delete_blog.php?blog_id=<?php echo $post['blog_id']; ?>"
-        class="delete-comment"
+        class="delete-post"
         onclick="return confirm('Are you sure you want to delete this post?');">
         DELETE POST
     </a>
-
+    <a href="/blog_app/edit_blog.php?blog_id=<?php echo $post['blog_id']; ?>"
+        class="delete-post"
+        onclick="return confirm('Are you sure you want to edit this post?');">
+        Edit
+    </a>
 <?php endif; ?>
 <p class="blog-text"><?php echo htmlspecialchars($content); ?></p>
 <div class="comments-wrapper">

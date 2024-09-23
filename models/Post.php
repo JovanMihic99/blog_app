@@ -45,6 +45,19 @@ class Post
         }
         return null;
     }
+    public function update_post($blog_id, $title, $content, $user_id, $category_id)
+    {
+        $stmt = $this->conn->prepare("UPDATE blog_post SET title = :title, content = :content, user_id = :user_id, category_id = :category_id WHERE blog_id = :blog_id");
+        $stmt->bindParam(':blog_id', $blog_id);
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':content', $content);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':category_id', $category_id);
+        if ($stmt->execute()) {
+            return true; // Add post successful
+        }
+        return false;
+    }
     public function get_comment($id)
     {
         $stmt = $this->conn->prepare("SELECT * FROM comment WHERE comment_id = :comment_id;");
