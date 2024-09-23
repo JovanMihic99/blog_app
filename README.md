@@ -8,7 +8,7 @@ Make sure your PHP server and MySQL server are using the proper versions.
 Place this project in your /var/www/html/ directory.
 
 ### Creating the database
-Use the provided database script to create the database
+Use the database script (provided in this directory) to create the database
 
 ### Using the app
 Navigate to "http://localhost:8000/blog_app" in your browser.
