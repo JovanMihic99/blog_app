@@ -1,12 +1,13 @@
 <?php
+require __DIR__ . "/config.php";
 
 class Database
 {
-    // Database configuration properties
-    private $host = 'localhost';
-    private $db_name = 'blog_site_schema';
-    private $username = 'root';
-    private $password = 'password';
+
+    private $host = DB_HOSTNAME;
+    private $db_name = DB_NAME;
+    private $username = DB_USERNAME;
+    private $password = DB_PASSWORD;
     private $conn;
 
     // Method to get the database connection
