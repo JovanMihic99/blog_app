@@ -1,5 +1,5 @@
 <h1><?php echo htmlspecialchars($title); ?></h1>
-<form method="POST" action="/blog_app/register.php">
+<form class="input-form" method="POST" action="/blog_app/register.php">
     <label for="username">Username:</label>
     <input type="text" name="username" id="username" required>
     <span class="error-message" style="color: red; display: none;"></span> <!-- Error message for username -->

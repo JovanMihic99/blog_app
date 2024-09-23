@@ -146,7 +146,7 @@ class Post
     }
     public function get_categories()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM category;");
+        $stmt = $this->conn->prepare("SELECT * FROM category ORDER BY name;");
         if ($stmt->execute()) {
             // Fetch all results as an associative array
             $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);

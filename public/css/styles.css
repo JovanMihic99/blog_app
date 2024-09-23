@@ -146,7 +146,7 @@ footer {
 }
 
 /* Form Styles */
-form {
+.input-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,7 +157,12 @@ form {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
+.filter-form {
+  align-items: center;
+  max-width: 100%;
+  margin: 1rem auto;
+  padding: 5px;
+}
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -216,8 +221,7 @@ button:hover {
 }
 
 /* Style .delete-comment link as a button */
-.delete-comment,
-.delete-post {
+.delete-comment {
   display: inline-block;
   padding: 8px 16px;
   color: #fff;
@@ -231,6 +235,30 @@ button:hover {
   position: absolute;
   top: 0;
   right: 0;
+}
+.delete-post {
+  display: inline-block;
+  padding: 2px 8px;
+  color: #fff;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.edit-post {
+  display: inline-block;
+  padding: 2px 8px;
+  color: #fff;
+  background-color: #3ce767;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .delete-comment:hover {
