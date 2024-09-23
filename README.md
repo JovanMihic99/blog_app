@@ -5,7 +5,7 @@
 ## How to set up
 Make sure your PHP server and MySQL server are using the proper versions.
 ### Running the app on your PHP server
-Place this project in your /var/www/html/ directory.
+Place this project in your /var/www/html/ directory on your php server.
 
 ### Creating the database
 Use the database script (provided in this directory) to create the database
