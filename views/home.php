@@ -14,6 +14,7 @@
             <?php endforeach; ?>
         </select>
         <button type="submti">Filter</button>
+        <a href="/blog_app/index.php">Clear filter</a>
     </form>
 <?php endif; ?>
 <?php if (!empty($posts)): ?>
