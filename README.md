@@ -1,6 +1,6 @@
 # Blog App
 
-A simple PHP-based blog application, which allows users to register, login, create, edit, and delete blog posts. Built with PHP and MySQL.
+A simple PHP-based blog application, which allows users to register, login, create, edit, and delete blog posts. Built with the LAMP stack.
 
 ## Table of Contents
 - [Features](#features)
