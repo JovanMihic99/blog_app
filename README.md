@@ -14,6 +14,7 @@ A simple PHP-based blog application, which allows users to register, login, crea
 - Create, edit, and delete blog posts
 - View a list of all blog posts
 - Simple user management
+- Password hashing
 
 ## Technologies Used
 - PHP 8.1.2
